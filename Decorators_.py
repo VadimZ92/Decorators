@@ -1,11 +1,11 @@
 from pprint import pprint
 import os
-from Decorator_ import Decorator
+from Decorator_ import Param_Decorator
 
 file_name = "recipes.txt"
 
 
-@Decorator
+@Param_Decorator("logger.txt")
 def сooking(file_name):
     with open(file_name, encoding="utf-8") as file:
         cook_book = {}
@@ -26,7 +26,7 @@ def сooking(file_name):
 сooking(file_name)
 
 
-@Decorator
+@Param_Decorator("logger.txt")
 def repetition_сount(dishes):
     repetition_dict = {}
     count = 1
@@ -41,11 +41,10 @@ def repetition_сount(dishes):
     return count
 
 
-@Decorator
+@Param_Decorator("logger.txt")
 def get_shop_list_by_dishes(dishes, person_count):
     ingredients_dict1 = {}
     ingredients_dict2 = {}
-
     for dish, ingredients in сooking(file_name).items():
         if dish in dishes:
             for meaning in ingredients:
